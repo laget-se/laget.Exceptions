@@ -38,8 +38,6 @@ public class ExceptionMiddleware
         }
         catch (laget.Exceptions.Exception ex)
         {
-            Log.Error(ex, ex.Message);
-
             await HandleExceptionAsync(context, ex);
         }
         catch (Exception e)
@@ -48,8 +46,6 @@ public class ExceptionMiddleware
             {
                 await HandleExceptionAsync(context, e.InnerException?.GetBaseException() as laget.Exceptions.Exception);
             }
-
-            Log.Error(e, e.Message);
 
             await HandleExceptionAsync(context, e);
         }
