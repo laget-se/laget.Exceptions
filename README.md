@@ -3,7 +3,7 @@ A generic implementation of Exceptions used in our applications...
 
 ## Usage
 ```c#
-public class ConstraintException : BaseException
+public class ConstraintException : laget.Exceptions.Exception
 {
     public override HttpStatusCode StatusCode { get; } = HttpStatusCode.MethodNotAllowed;
 
@@ -42,7 +42,7 @@ public class ExceptionMiddleware
         }
         catch (Exception ex)
         {
-            if (ex.InnerException?.GetBaseException() is BaseException)
+            if (ex.InnerException?.GetBaseException() is laget.Exceptions.Exception)
             {
                 await HandleException(httpContext, ex.InnerException?.GetBaseException() as BaseException);
             }
@@ -51,7 +51,7 @@ public class ExceptionMiddleware
         }
     }
 
-    public static Task HandleException(HttpContext httpContext, BaseException ex)
+    public static Task HandleException(HttpContext httpContext, laget.Exceptions.Exception ex)
     {
         httpContext.Response.Clear();
         httpContext.Response.StatusCode = (int)ex.StatusCode;
