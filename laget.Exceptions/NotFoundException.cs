@@ -6,7 +6,7 @@ namespace laget.Exceptions
 {
     public class NotFoundException<T> : Exception
     {
-        public override HttpStatusCode StatusCode { get; } = HttpStatusCode.NotFound;
+        public override HttpStatusCode StatusCode => HttpStatusCode.NotFound;
 
         static string BaseMessage => $"{typeof(T).Name} was not found for";
 
