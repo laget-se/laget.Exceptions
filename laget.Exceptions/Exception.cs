@@ -11,11 +11,13 @@ namespace laget.Exceptions
         /// </summary>
         public virtual HttpStatusCode StatusCode { get; } = HttpStatusCode.InternalServerError;
         public virtual object Details { get; set; } = null;
+        public virtual string Instance { get; set; } = null;
 
-        public string Type { get; }
+        public virtual string Type { get; }
 
         public Exception()
         {
+            Type = GetType().Name;
         }
 
         public Exception(string message)
@@ -29,5 +31,14 @@ namespace laget.Exceptions
         {
             Type = GetType().Name;
         }
+
+        public Models.Exception Model => new Models.Exception
+        {
+            Type = Type,
+            Title = Message,
+            Status = (int)StatusCode,
+            Details = Details,
+            Instance = Instance
+        };
     }
 }
