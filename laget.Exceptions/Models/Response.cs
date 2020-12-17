@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace laget.Exceptions.Models
 {
     [Serializable]
-    public class Exception
+    public class Response
     {
         /// <summary>
         /// "type" (string) - A URI reference [RFC3986] that identifies the problem type. This specification encourages that, when

@@ -32,7 +32,7 @@ namespace laget.Exceptions
             Type = GetType().Name;
         }
 
-        public Models.Exception Model => new Models.Exception
+        public Models.Response Model => new Models.Response
         {
             Type = Type,
             Title = Message,
