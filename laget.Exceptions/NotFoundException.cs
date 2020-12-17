@@ -10,6 +10,11 @@ namespace laget.Exceptions
 
         static string BaseMessage => $"{typeof(T).Name} was not found for";
 
+        public NotFoundException(string message)
+            : base(message)
+        {
+        }
+
         public NotFoundException(int id)
             : base($"{BaseMessage} Id: {id}")
         {
