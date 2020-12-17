@@ -39,5 +39,11 @@ namespace laget.Exceptions.Models
         /// </summary>
         [JsonProperty("instance", NullValueHandling = NullValueHandling.Ignore)]
         public string Instance { get; set; }
+
+        /// <summary>
+        /// A human-readable explanation specific to this occurrence of the problem.
+        /// </summary>
+        [JsonProperty("errors", NullValueHandling = NullValueHandling.Ignore)]
+        public object Errors { get; set; }
     }
 }
