@@ -30,37 +30,50 @@ public class ExceptionMiddleware
         _next = next;
     }
 
-    public async Task Invoke(HttpContext httpContext)
+    public async Task Invoke(HttpContext context)
     {
         try
         {
-            await _next(httpContext);
+            await _next(context);
         }
-        catch (BaseException ex)
+        catch (laget.Exceptions.Exception ex)
         {
-            await HandleException(httpContext, ex);
+            Log.Error(ex, ex.Message);
+
+            await HandleExceptionAsync(context, ex);
         }
-        catch (Exception ex)
+        catch (Exception e)
         {
-            if (ex.InnerException?.GetBaseException() is laget.Exceptions.Exception)
+            if (e.InnerException?.GetBaseException() is laget.Exceptions.Exception)
             {
-                await HandleException(httpContext, ex.InnerException?.GetBaseException() as BaseException);
+                await HandleExceptionAsync(context, e.InnerException?.GetBaseException() as laget.Exceptions.Exception);
             }
 
-            throw ex;
+            Log.Error(e, e.Message);
+
+            await HandleExceptionAsync(context, e);
         }
     }
 
-    public static Task HandleException(HttpContext httpContext, laget.Exceptions.Exception ex)
+    static Task HandleExceptionAsync(HttpContext context, Exception ex)
     {
-        httpContext.Response.Clear();
-        httpContext.Response.StatusCode = (int)ex.StatusCode;
-        httpContext.Response.ContentType = "application/problem+json";
+        return HandleExceptionAsync(context, ex.GetResponse());
+    }
 
-        var exception = ex.Model;
-        exception.Instance = httpContext.Request.Path.Value;
+    static Task HandleExceptionAsync(HttpContext context, laget.Exceptions.Exception ex)
+    {
+        return HandleExceptionAsync(context, ex.GetResponse());
+    }
 
-        return httpContext.Response.WriteAsync(JsonConvert.SerializeObject(exception));
+    static Task HandleExceptionAsync(HttpContext context, laget.Exceptions.Models.Response model)
+    {
+        context.Response.Clear();
+        context.Response.ContentType = "application/problem+json";
+        context.Response.StatusCode = model.Status ?? (int)HttpStatusCode.InternalServerError;
+
+        var response = JsonConvert.SerializeObject(model);
+
+        return context.Response.WriteAsync(response);
     }
 }
 ```
