@@ -5,7 +5,7 @@ A generic implementation of Exceptions used in our applications...
 ```c#
 public class ConstraintException : laget.Exceptions.Exception
 {
-    public override HttpStatusCode StatusCode { get; } = HttpStatusCode.MethodNotAllowed;
+    public override HttpStatusCode StatusCode => HttpStatusCode.MethodNotAllowed;
 
     public ConstraintException(string message)
         : base(message)
