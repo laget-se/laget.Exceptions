@@ -1,5 +1,7 @@
-﻿# Exceptions
+# Exceptions
 A generic implementation of Exceptions used in our applications...
+
+![Nuget](https://img.shields.io/nuget/v/laget.Exceptions)
 
 ## Usage
 ```c#
