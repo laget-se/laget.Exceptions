@@ -3,17 +3,17 @@ using Xunit;
 
 namespace laget.Exceptions.Tests
 {
-    public class InternalServerErrorExceptionTest
+    public class UnhandledExceptionTests
     {
         [Fact]
         public void ShouldCreateCorrectObject()
         {
             var message = "You cannot do this!";
-            var exception = new InternalServerErrorException(message);
+            var exception = new UnhandledException(message);
 
             Assert.Equal(message, exception.Message);
             Assert.Equal(HttpStatusCode.InternalServerError, exception.StatusCode);
-            Assert.Equal("InternalServerErrorException", exception.Type);
+            Assert.Equal("UnhandledException", exception.Type);
         }
     }
 }

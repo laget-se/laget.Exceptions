@@ -2,16 +2,16 @@
 
 namespace laget.Exceptions
 {
-    public class InternalServerErrorException : Exception
+    public class UnhandledException : Exception
     {
         public override HttpStatusCode StatusCode => HttpStatusCode.InternalServerError;
 
-        public InternalServerErrorException(string message)
+        public UnhandledException(string message)
             : base(message)
         {
         }
 
-        public InternalServerErrorException(string message, System.Exception ex)
+        public UnhandledException(string message, System.Exception ex)
             : base(message, ex)
         {
         }
