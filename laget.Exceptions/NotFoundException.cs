@@ -15,6 +15,11 @@ namespace laget.Exceptions
         {
         }
 
+        public NotFoundException(string message, System.Exception ex)
+            : base(message, ex)
+        {
+        }
+
         public NotFoundException(int id)
             : base($"{BaseMessage} Id: {id}")
         {
@@ -31,12 +36,12 @@ namespace laget.Exceptions
         }
 
         public NotFoundException(Dictionary<string, int> propertyValuePairs)
-          : base($"{BaseMessage} " + string.Join(",", propertyValuePairs.Select(x => $"{x.Key}: {x.Value}")))
+            : base($"{BaseMessage} " + string.Join(",", propertyValuePairs.Select(x => $"{x.Key}: {x.Value}")))
         {
         }
 
         public NotFoundException(Dictionary<string, string> propertyValuePairs)
-          : base($"{BaseMessage} " + string.Join(",", propertyValuePairs.Select(x => $"{x.Key}: {x.Value}")))
+            : base($"{BaseMessage} " + string.Join(",", propertyValuePairs.Select(x => $"{x.Key}: {x.Value}")))
         {
         }
     }
