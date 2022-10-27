@@ -3,7 +3,7 @@
   <metadata>
     <id>laget.Exceptions</id>
     <title>laget.Exceptions</title>
-    <version>$(version)$</version>
+    <version>$version$</version>
     <authors>gonace,laget.se</authors>
     <owners>laget.se</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
