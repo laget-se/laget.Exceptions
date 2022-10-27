@@ -3,10 +3,10 @@ using System.Runtime.CompilerServices;
 
 [assembly: AssemblyCompany("Sportion Media Group AB")]
 [assembly: AssemblyConfiguration("Release")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0")]
 [assembly: AssemblyInformationalVersion("1.0.0")]
 [assembly: AssemblyProduct("laget.Exceptions")]
 [assembly: AssemblyTitle("laget.Exceptions")]
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0")]
 
-[assembly: InternalsVisibleTo("Kakservice.Integration.Sdk.Tests")]
+[assembly: InternalsVisibleTo("laget.Exceptions.Tests")]
