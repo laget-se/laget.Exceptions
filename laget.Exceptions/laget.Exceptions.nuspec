@@ -10,7 +10,7 @@
     <description>A generic implementation of Exceptions used in our applications...</description>
     <summary></summary>
     <license type="expression">Apache-2.0</license>
-    <projectUrl>https://laget.se</projectUrl>
+    <projectUrl>https://www.laget.se</projectUrl>
     <icon>assets\icon.png</icon>
     <readme>assets\README.md</readme>
     <repository type="git" url="https://github.com/laget-se/laget.Exceptions" branch="master" />
