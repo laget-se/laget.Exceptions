@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using laget.Exceptions.Abstractions;
 
 namespace laget.Exceptions.Extensions
 {
@@ -16,7 +17,7 @@ namespace laget.Exceptions.Extensions
             };
         }
 
-        public static Models.Response GetResponse(this Exception exception)
+        public static Models.Response GetResponse(this BaseException exception)
         {
             return new Models.Response
             {

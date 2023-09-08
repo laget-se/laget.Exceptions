@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using laget.Exceptions.Abstractions;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 
 namespace laget.Exceptions
 {
-    public class ValidationException : Exception
+    public class ValidationException : BaseException
     {
-        public override HttpStatusCode StatusCode => HttpStatusCode.BadRequest;
+        public override HttpStatusCode StatusCode { get; set; } = HttpStatusCode.BadRequest;
 
         public ValidationException(string message)
             : base(message)

@@ -1,10 +1,11 @@
 ﻿using System.Net;
+using laget.Exceptions.Abstractions;
 
 namespace laget.Exceptions
 {
-    public class UnhandledException : Exception
+    public class UnhandledException : BaseException
     {
-        public override HttpStatusCode StatusCode => HttpStatusCode.InternalServerError;
+        public override HttpStatusCode StatusCode { get; set; } = HttpStatusCode.InternalServerError;
 
         public UnhandledException(string message)
             : base(message)

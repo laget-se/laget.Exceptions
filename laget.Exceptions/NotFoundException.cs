@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using laget.Exceptions.Abstractions;
 
 namespace laget.Exceptions
 {
-    public class NotFoundException<T> : Exception
+    public class NotFoundException<T> : BaseException
     {
-        public override HttpStatusCode StatusCode => HttpStatusCode.NotFound;
+        public override HttpStatusCode StatusCode { get; set; } = HttpStatusCode.NotFound;
 
         private static string BaseMessage => $"{typeof(T).Name} was not found for";
 

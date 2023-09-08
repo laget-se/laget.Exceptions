@@ -1,12 +1,13 @@
-﻿using System.Net;
+﻿using laget.Exceptions.Abstractions;
+using System.Net;
 
 namespace laget.Exceptions
 {
-    public class ClientException<T> : Exception
+    public class ClientException<T> : BaseException
     {
         private static string ClientName => $"{typeof(T).Name}";
 
-        public override HttpStatusCode StatusCode => HttpStatusCode.InternalServerError;
+        public override HttpStatusCode StatusCode { get; set; } = HttpStatusCode.InternalServerError;
 
         public ClientException(string message)
             : base($"{message} (Client='{ClientName}')")
@@ -28,7 +29,7 @@ namespace laget.Exceptions
             : base($"{message} (Client='{ClientName}')")
         {
             Details = details;
-            StatusCode = status != null ? (HttpStatusCode)status : HttpStatusCode.InternalServerError;
+            SetStatusCode(status != null ? (HttpStatusCode)status : HttpStatusCode.InternalServerError);
         }
     }
 }

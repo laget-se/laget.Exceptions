@@ -1,10 +1,11 @@
-﻿using System.Net;
+﻿using laget.Exceptions.Abstractions;
+using System.Net;
 
 namespace laget.Exceptions
 {
-    public class DuplicateException : Exception
+    public class DuplicateException : BaseException
     {
-        public override HttpStatusCode StatusCode => HttpStatusCode.Conflict;
+        public override HttpStatusCode StatusCode { get; set; } = HttpStatusCode.Conflict;
 
         public DuplicateException(string message)
             : base(message)

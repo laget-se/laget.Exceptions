@@ -1,5 +1,5 @@
-﻿using System.Net;
-using laget.Exceptions.Tests.Models;
+﻿using laget.Exceptions.Tests.Models;
+using System.Net;
 using Xunit;
 
 namespace laget.Exceptions.Tests

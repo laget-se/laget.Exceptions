@@ -1,10 +1,11 @@
-﻿using System.Net;
+﻿using laget.Exceptions.Abstractions;
+using System.Net;
 
 namespace laget.Exceptions
 {
-    public class ConstraintException : Exception
+    public class ConstraintException : BaseException
     {
-        public override HttpStatusCode StatusCode => HttpStatusCode.MethodNotAllowed;
+        public override HttpStatusCode StatusCode { get; set; } = HttpStatusCode.MethodNotAllowed;
 
         public ConstraintException(string message)
             : base(message)

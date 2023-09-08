@@ -1,10 +1,11 @@
 ﻿using System.Net;
+using laget.Exceptions.Abstractions;
 
 namespace laget.Exceptions
 {
-    public class ExpectationException : Exception
+    public class ExpectationException : BaseException
     {
-        public override HttpStatusCode StatusCode => HttpStatusCode.ExpectationFailed;
+        public override HttpStatusCode StatusCode { get; set; } = HttpStatusCode.ExpectationFailed;
 
         public ExpectationException(string message)
             : base(message)
