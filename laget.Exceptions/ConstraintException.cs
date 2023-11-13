@@ -5,7 +5,7 @@ namespace laget.Exceptions
 {
     public class ConstraintException : BaseException
     {
-        public override HttpStatusCode StatusCode { get; set; } = HttpStatusCode.MethodNotAllowed;
+        public override HttpStatusCode StatusCode { get; set; } = HttpStatusCode.BadRequest;
 
         public ConstraintException(string message)
             : base(message)
