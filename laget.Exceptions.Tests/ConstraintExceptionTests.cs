@@ -12,7 +12,7 @@ namespace laget.Exceptions.Tests
             var exception = new ConstraintException(message);
 
             Assert.Equal(message, exception.Message);
-            Assert.Equal(HttpStatusCode.MethodNotAllowed, exception.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, exception.StatusCode);
             Assert.Equal("ConstraintException", exception.Type);
         }
     }
